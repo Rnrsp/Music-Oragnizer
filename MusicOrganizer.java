@@ -63,6 +63,13 @@ public class MusicOrganizer
         }
     }
     
+    public void listAllFiles()
+    {
+        for(String filename : files) {
+            System.out.println(filename);
+        }
+    }
+    
     /**
      * Remove a file from the collection.
      * @param index The index of the file to be removed.
@@ -71,6 +78,31 @@ public class MusicOrganizer
     {
         if(validIndex(index)){
             files.remove(index);
+        }
+    }
+    
+    public void listWithIndex()
+    {
+        int position = 0;
+        for(String filename : files){
+            System.out.println(position + ":" + filename);
+            position++;
+        }
+    }
+    
+    public void listMatching(String searchString)
+    {
+        boolean foundMatch = false;
+        
+        for(String filename : files) {
+            if(filename.contains(searchString)) {
+                System.out.println(filename);
+                foundMatch = true;
+            }
+        }
+        
+        if(!foundMatch) {
+            System.out.println("No files matched the search string:" + searchString);
         }
     }
 }
